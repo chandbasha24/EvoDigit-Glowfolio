@@ -77,11 +77,6 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <img 
-              src="/lovable-uploads/c635732e-aeee-426e-b673-44c2c87c472d.png" 
-              alt="EvoDigit Logo" 
-              className="mx-auto mb-8 w-32 h-32"
-            />
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               We Create Digital
               <span className="text-gold"> Experiences</span>
@@ -89,7 +84,7 @@ const Index = () => {
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
               Transform your digital presence with our innovative solutions and creative expertise.
             </p>
-            <Button className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105">
+            <Button className="bg-black hover:bg-black/80 text-gold border-2 border-gold font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -226,7 +221,7 @@ const Index = () => {
             </p>
             <Button 
               onClick={handleContactClick}
-              className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105"
+              className="bg-black hover:bg-black/80 text-gold border-2 border-gold font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105"
             >
               <Phone className="mr-2 h-4 w-4" />
               Contact on WhatsApp
@@ -262,7 +257,7 @@ const Index = () => {
                   required
                   className="bg-black/50 border-gold/20 text-white placeholder:text-gray-400"
                 />
-                <Button type="submit" className="w-full bg-gold hover:bg-gold-light text-black">
+                <Button type="submit" className="w-full bg-black hover:bg-black/80 text-gold border-2 border-gold">
                   <Send className="mr-2 h-4 w-4" />
                   Send Message
                 </Button>

@@ -24,9 +24,16 @@ const Navbar = () => {
       isScrolled ? 'bg-black/80 backdrop-blur-md py-4' : 'bg-transparent py-6'
     }`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-2xl font-bold text-white font-montserrat">
-          Evo<span className="text-gold">Digit</span>
-        </a>
+        <div className="flex items-center">
+          <img 
+            src="/lovable-uploads/c635732e-aeee-426e-b673-44c2c87c472d.png" 
+            alt="EvoDigit Logo" 
+            className="w-12 h-12 mr-3"
+          />
+          <a href="#" className="text-2xl font-bold text-white font-montserrat">
+            Evo<span className="text-gold">Digit</span>
+          </a>
+        </div>
         <div className="hidden md:flex items-center space-x-8">
           <button onClick={() => scrollToSection('services')} className="text-white hover:text-gold transition-colors font-montserrat">
             Services
@@ -40,7 +47,7 @@ const Navbar = () => {
           <button onClick={() => scrollToSection('careers')} className="text-white hover:text-gold transition-colors font-montserrat">
             Careers
           </button>
-          <Button onClick={() => scrollToSection('contact')} className="bg-gold hover:bg-gold-light text-black font-semibold transition-all transform hover:scale-105 font-montserrat">
+          <Button onClick={() => scrollToSection('contact')} className="bg-black hover:bg-black/80 text-gold border-2 border-gold font-semibold transition-all transform hover:scale-105 font-montserrat">
             Contact Us
           </Button>
         </div>
