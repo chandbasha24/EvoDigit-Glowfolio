@@ -67,7 +67,7 @@ const Index = () => {
     <div className="bg-black min-h-screen font-montserrat">
       <Navbar />
       
-      {/* Hero Section with reduced bottom spacing */}
+      {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pb-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold/20 via-black to-black" />
         <div className="container mx-auto px-6 relative z-10">
@@ -84,7 +84,7 @@ const Index = () => {
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
               Transform your digital presence with our innovative solutions and creative expertise.
             </p>
-            <Button className="bg-black hover:bg-black/80 text-gold border-2 border-gold font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105">
+            <Button className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105 animate-pulse shadow-[0_0_15px_rgba(255,215,0,0.5)]">
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -115,7 +115,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section - removed "Since 2015" */}
+      {/* About Section */}
       <section id="about" className="py-20 bg-black/95">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -132,7 +132,7 @@ const Index = () => {
               <p className="text-gray-400 mb-6">
                 We are a team of passionate digital creators, developers, and strategists dedicated to transforming businesses through innovative digital solutions.
               </p>
-              <Button variant="outline" className="border-gold text-gold hover:bg-gold hover:text-black transition-all">
+              <Button variant="outline" className="bg-black hover:bg-black/80 text-gold border-2 border-gold transition-all">
                 Learn More
               </Button>
             </motion.div>
@@ -230,7 +230,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer Section */}
       <footer className="bg-black/95 border-t border-gold/20">
         <div className="container mx-auto px-6 py-12">
           <div className="grid md:grid-cols-2 gap-12">

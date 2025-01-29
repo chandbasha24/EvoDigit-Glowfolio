@@ -28,11 +28,8 @@ const Navbar = () => {
           <img 
             src="/lovable-uploads/c635732e-aeee-426e-b673-44c2c87c472d.png" 
             alt="EvoDigit Logo" 
-            className="w-12 h-12 mr-3"
+            className="w-16 h-16"
           />
-          <a href="#" className="text-2xl font-bold text-white font-montserrat">
-            Evo<span className="text-gold">Digit</span>
-          </a>
         </div>
         <div className="hidden md:flex items-center space-x-8">
           <button onClick={() => scrollToSection('services')} className="text-white hover:text-gold transition-colors font-montserrat">
