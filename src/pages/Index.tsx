@@ -56,7 +56,6 @@ const Index = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    // Here you would typically send this data to your backend
     toast({
       title: "Message sent!",
       description: "We'll get back to you soon.",
@@ -68,8 +67,8 @@ const Index = () => {
     <div className="bg-black min-h-screen font-montserrat">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Hero Section with reduced bottom spacing */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pb-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold/20 via-black to-black" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -78,7 +77,11 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <span className="text-gold text-sm font-medium mb-4 inline-block">WELCOME TO EVODIGIT</span>
+            <img 
+              src="/lovable-uploads/c635732e-aeee-426e-b673-44c2c87c472d.png" 
+              alt="EvoDigit Logo" 
+              className="mx-auto mb-8 w-32 h-32"
+            />
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               We Create Digital
               <span className="text-gold"> Experiences</span>
@@ -117,7 +120,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section - removed "Since 2015" */}
       <section id="about" className="py-20 bg-black/95">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -129,7 +132,7 @@ const Index = () => {
             >
               <span className="text-gold text-sm font-medium mb-4 inline-block">ABOUT US</span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Crafting Digital Excellence Since 2015
+                Crafting Digital Excellence
               </h2>
               <p className="text-gray-400 mb-6">
                 We are a team of passionate digital creators, developers, and strategists dedicated to transforming businesses through innovative digital solutions.
@@ -178,7 +181,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Careers Section */}
+      {/* Careers Section - Updated button to WhatsApp contact */}
       <section id="careers" className="py-20 bg-black/95">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -197,8 +200,12 @@ const Index = () => {
               >
                 <h3 className="text-xl font-semibold text-white mb-2">{position}</h3>
                 <p className="text-gray-400 mb-4">Full-time · Remote</p>
-                <Button variant="outline" className="border-gold text-gold hover:bg-gold hover:text-black transition-all">
-                  Apply Now
+                <Button 
+                  onClick={handleContactClick}
+                  variant="outline" 
+                  className="border-gold text-gold hover:bg-gold hover:text-black transition-all"
+                >
+                  Contact Us
                 </Button>
               </motion.div>
             ))}
@@ -206,7 +213,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section with Updated Button */}
+      {/* Contact Section */}
       <section id="contact" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
