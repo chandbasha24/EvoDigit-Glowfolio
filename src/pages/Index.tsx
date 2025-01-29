@@ -1,11 +1,18 @@
 import { motion } from 'framer-motion';
-import { Palette, Code, LineChart, Users, Mail, ArrowRight } from 'lucide-react';
+import { Palette, Code, LineChart, Users, Mail, ArrowRight, Phone, Linkedin, Send } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ServiceCard from '@/components/ServiceCard';
 import PortfolioCard from '@/components/PortfolioCard';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
 const Index = () => {
+  const { toast } = useToast();
+  const phoneNumber = "7075087601";
+  const linkedinUrl = "https://www.linkedin.com/company/evodigit/";
+
   const services = [
     {
       icon: Palette,
@@ -41,6 +48,21 @@ const Index = () => {
       imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
     }
   ];
+
+  const handleContactClick = () => {
+    window.open(`https://wa.me/${phoneNumber}`, '_blank');
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    // Here you would typically send this data to your backend
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you soon.",
+    });
+    (e.target as HTMLFormElement).reset();
+  };
 
   return (
     <div className="bg-black min-h-screen font-montserrat">
@@ -184,7 +206,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section with Updated Button */}
       <section id="contact" className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -195,13 +217,87 @@ const Index = () => {
             <p className="text-gray-400 mb-8">
               Ready to start your next project? Contact us and let's discuss how we can help bring your vision to life.
             </p>
-            <Button className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105">
-              <Mail className="mr-2 h-4 w-4" />
-              Contact Us
+            <Button 
+              onClick={handleContactClick}
+              className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105"
+            >
+              <Phone className="mr-2 h-4 w-4" />
+              Contact on WhatsApp
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Footer Section */}
+      <footer className="bg-black/95 border-t border-gold/20">
+        <div className="container mx-auto px-6 py-12">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">Send us a message</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="bg-black/50 border-gold/20 text-white placeholder:text-gray-400"
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Your Email"
+                  required
+                  className="bg-black/50 border-gold/20 text-white placeholder:text-gray-400"
+                />
+                <Textarea
+                  name="message"
+                  placeholder="Your Message"
+                  required
+                  className="bg-black/50 border-gold/20 text-white placeholder:text-gray-400"
+                />
+                <Button type="submit" className="w-full bg-gold hover:bg-gold-light text-black">
+                  <Send className="mr-2 h-4 w-4" />
+                  Send Message
+                </Button>
+              </form>
+            </div>
+
+            {/* Contact Info & Social Links */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+                <div className="space-y-4">
+                  <p className="text-gray-400 flex items-center">
+                    <Phone className="mr-2 h-4 w-4 text-gold" />
+                    {phoneNumber}
+                  </p>
+                  <a 
+                    href={linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 flex items-center hover:text-gold transition-colors"
+                  >
+                    <Linkedin className="mr-2 h-4 w-4 text-gold" />
+                    Follow us on LinkedIn
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-white font-semibold mb-4">Office Hours</h4>
+                <p className="text-gray-400">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p className="text-gray-400">Saturday: 10:00 AM - 2:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-gold/20 text-center">
+            <p className="text-gray-400">
+              © {new Date().getFullYear()} EvoDigit. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
