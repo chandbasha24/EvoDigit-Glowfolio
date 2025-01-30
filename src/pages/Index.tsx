@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
-import { Palette, Code, LineChart, Users, Mail, ArrowRight, Phone, Linkedin, Send } from 'lucide-react';
+import { Palette, Code, LineChart, Users, Mail, ArrowRight, Phone, Linkedin, Send, MonitorSmartphone, Briefcase, Trophy } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import ServiceCard from '@/components/ServiceCard';
 import PortfolioCard from '@/components/PortfolioCard';
+import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -40,17 +42,17 @@ const Index = () => {
     {
       title: "E-commerce Platform",
       category: "Web Development",
-      imageUrl: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+      icon: MonitorSmartphone
     },
     {
       title: "Brand Identity",
       category: "Design",
-      imageUrl: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+      icon: Briefcase
     },
     {
       title: "Mobile App",
       category: "Development",
-      imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+      icon: Trophy
     }
   ];
 
@@ -96,33 +98,7 @@ const Index = () => {
     <div className="bg-black min-h-screen font-montserrat">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pb-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold/20 via-black to-black" />
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              We Create Digital
-              <span className="text-gold"> Experiences</span>
-            </h1>
-            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              Transform your digital presence with our innovative solutions and creative expertise.
-            </p>
-            <Button 
-              onClick={handleGetStarted}
-              className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105 animate-pulse shadow-[0_0_15px_rgba(255,215,0,0.5)]"
-            >
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      <HeroSection onGetStarted={handleGetStarted} />
 
       {/* Services Section */}
       <section id="services" className="py-20 bg-black">
@@ -147,43 +123,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-black/95">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-gold text-sm font-medium mb-4 inline-block">ABOUT US</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                Crafting Digital Excellence
-              </h2>
-              <p className="text-gray-400 mb-6">
-                We are a team of passionate digital creators, developers, and strategists dedicated to transforming businesses through innovative digital solutions.
-              </p>
-              <Button variant="outline" className="bg-black hover:bg-black/80 text-gold border-2 border-gold transition-all">
-                Learn More
-              </Button>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-                alt="Team at work"
-                className="rounded-lg shadow-2xl"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* Portfolio Section */}
       <section id="portfolio" className="py-20 bg-black">
@@ -197,18 +137,22 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {portfolio.map((item, index) => (
-              <PortfolioCard
+              <motion.div
                 key={index}
-                title={item.title}
-                category={item.category}
-                imageUrl={item.imageUrl}
-              />
+                whileHover={{ y: -5 }}
+                className="relative group overflow-hidden rounded-lg bg-black/40 backdrop-blur-lg p-8 border border-gold/20 hover:border-gold/40"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <item.icon className="w-16 h-16 text-gold mb-4" />
+                  <span className="text-gold text-sm font-medium mb-2">{item.category}</span>
+                  <h3 className="text-white text-xl font-semibold">{item.title}</h3>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Careers Section - Updated button to WhatsApp contact */}
       <section id="careers" className="py-20 bg-black/95">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
