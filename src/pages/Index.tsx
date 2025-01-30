@@ -14,6 +14,10 @@ const Index = () => {
   const phoneNumber = "7075087601";
   const linkedinUrl = "https://www.linkedin.com/company/evodigit/";
 
+  const handleGetStarted = () => {
+    window.open(`https://wa.me/${phoneNumber}`, '_blank');
+  };
+
   const services = [
     {
       icon: Palette,
@@ -109,7 +113,10 @@ const Index = () => {
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
               Transform your digital presence with our innovative solutions and creative expertise.
             </p>
-            <Button className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105 animate-pulse shadow-[0_0_15px_rgba(255,215,0,0.5)]">
+            <Button 
+              onClick={handleGetStarted}
+              className="bg-gold hover:bg-gold-light text-black font-semibold px-8 py-6 rounded-lg transition-all transform hover:scale-105 animate-pulse shadow-[0_0_15px_rgba(255,215,0,0.5)]"
+            >
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
