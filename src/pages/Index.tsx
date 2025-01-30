@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Index = () => {
   const { toast } = useToast();
@@ -53,14 +54,38 @@ const Index = () => {
     window.open(`https://wa.me/${phoneNumber}`, '_blank');
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you soon.",
-    });
-    (e.target as HTMLFormElement).reset();
+    
+    const submissionData = {
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([submissionData]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you soon.",
+      });
+      
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -247,6 +272,13 @@ const Index = () => {
                   name="email"
                   type="email"
                   placeholder="Your Email"
+                  required
+                  className="bg-black/50 border-gold/20 text-white placeholder:text-gray-400"
+                />
+                <Input
+                  name="phone"
+                  type="tel"
+                  placeholder="Your Phone Number"
                   required
                   className="bg-black/50 border-gold/20 text-white placeholder:text-gray-400"
                 />
