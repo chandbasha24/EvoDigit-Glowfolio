@@ -13,7 +13,7 @@ import { supabase } from '@/integrations/supabase/client';
 
 const Index = () => {
   const { toast } = useToast();
-  const phoneNumber = "7075087601";
+  const phoneNumber = "";
   const linkedinUrl = "https://www.linkedin.com/company/evodigit/";
 
   const handleGetStarted = () => {
